@@ -1,0 +1,32 @@
+일일이 모든 리스트에서 추가할 html을 추가해줘야됨.
+-->PHP(효율적)
+
+http://127.0.0.1/index.php?id=HTML
+http://127.0.0.1/index.php?id=CSS
+http://127.0.0.1/index.php?id=javaScript
+-->하나의 파일(index.php)로 3개의 웹페이지를 표시
+-->파뀔부분만 입력하면 됨
+
+apache2-->manager : apache와 mysql관리가 가능
+htdocs --> 서버가 보내줄 HTML파일이 있음
+          --> add Project Folder에서 경로를 htdocs로 함.
+
+편하게 실습
+*실수 잡아주는 기능
+-->php-->php라는 구성설정 유형
+*manager
+-->configure에서 접속기록, 오류 기록 볼 수 있음
+
+PHP의 원리
+*클라이언트가 html을 요구 : WebServer가 직접 htdocs에서 줌.
+*php를 요구 : WebServer가 자신의 소관이 아니라는 것을 알고 php에서 처리하게 해서 결과적으로 php를 통해
+	      클라이언트에게 html을 줌.
+*html : 정적인 반응 
+ php 동적인 반응
+
+PHP의 데이터 타입
+
+
+
+
+
