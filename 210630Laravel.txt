@@ -1,0 +1,56 @@
+*?왜 index.php가 start point인지.
+
+*/posts/store에 대한 라우터 
+-->PostController의 postStore가 정보를 받는다. 
+
+*Ctrl + P
+-->파일/폴더 찾기
+
+*dd?
+
+*GET(정보조회)
+ POST(자원에 대한 변경)-->post의 request는 제약을 걸어놓음 (보안때문에) (자신의 정보가 해커에게 갈 수가 있음)
+-->CSRF를 postcreate.blade.php의 form태그시작 바로뒤에 @csrf라고 함
+
+*정보보내기
+-->PostsController.php에 메소드 추가 --> web.php에 route추가 --> PostController.php, postStore에서 파라미터 추가
+
+*config-->Database.php에서 봄 그리고 .env파일에서 설정
+
+*테이블 만들어야 됨.
+
+*laravel의 migration을 이용 
+php artisan make:migration create_posts_table
+-->하나의 테이블의 레코드 : Class로 만듦 --> Model이라고 함. 
+-->Model의 이름 관례 : Post(대문자, 단수)
+-->app폴더 밑에 Models에 생김
+-->migrations은 Database밑 
+
+*php artisan migration --> migration밑에 있는 애들을 테이블로 만들어줌.
+
+*Laravel Breeze : auth기능 (권한 확인)
+-->로그인, 회원가입, 비밀번호 리셋, 이메일인증, 비밀번호 재확인등의 기능을 추가한다.
+-->web.php에 require __DIR__ . '/auth.php'; 얘가 생기고 auth.php에 가보면 Route들이 많은 것을 볼 수 있다.
+-->그리고 어디서 이 라우터 안에 있는 클래스를 어디서 import했는지 보려면 App\Http\Controllers\Auth로
+가면 됨을 알 수 있다.
+
+*REPL-->node, php artisan tinker하면 이 모드로 됨.
+-->php artisan tinker
+-->column들을 추가, 제거할 수 있음.
+
+*전역함수 --> import 안 해도 됨
+
+*?pdo_mysql에서 세미콜론 빼기 난 왜 php.ini이 짧은지
+-->vender에 있는 php.ini파일과 환경변수로 추가한 폴더안에 있는 php.ini은 다르다.
+
+*migration이 테이블을 만듦
+
+*https://laravel.com/docs/8.x/starter-kits#introduction
+-->composer require laravel/breeze --dev
+-->인증관련된 걸 만들어줌.
+
+*https://laravel.com/docs/8.x/migrations#columns
+
+*Auth가 있고 auth가 있다.
+
+소독액 가져오기

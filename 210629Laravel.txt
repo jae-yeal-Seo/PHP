@@ -1,0 +1,97 @@
+*HTTP프로토콜
+
+*middleware (요청과 응답사이 특정기능을 하는 애)
+-->중간에 거를 수도 있음 (적합하지 않은 사용자이면)
+
+*route : 요청에대한 처리 코드-->RESTFULL하게 사용하기 위해 4개가 있음
+-->무명function 형태로 할 일이 정리돼 있음
+
+*마지막으로 view를 반환해줌(사용자에게 보여질) 
+
+*view를 단순 html이 아니라 동적으로 제공하기 위해서 (php처럼) 쓰는게 blade템플릿엔진
+-->blade템플릿 문법을 익혀야 함. 
+
+*?post-app에 들어가는 이유
+-->여기에 그래야 명령어 사용가능
+-->이게 그냥 라라벨이라는 웹 프레임 워크임.
+
+*요청반복이 자주 있음 
+--> 세션사용(서버에서)
+
+*웹서버 (Apache) 같은 건 현업에서 사용하고 로컬호스트로 접속할 때는 라라벨내부의 웹서버 같은 역할을 하는 게
+있기 때문에 사용하지 않아도 된다.
+
+*post-app에서 artisan을 해야 하는 이유 --> ls artisan을 해보면 알겠지만 그 파일에 있어서
+
+*public --> index.php가 start point
+
+*php artisan help serve 하면 php artisan뒤에오는 명령어를 볼 수 있음
+
+*?누군가 쓰고 있다?
+-->작업관리자 보면 아무것도 안해도 돌아가는 프로그램들이 있음
+
+*?같은 주소, 포트를 2창에 띄우면 안 됨?
+-->아니 같은 주소, 포트를 2개 열면 안 됨(서버를)
+
+*view('welcome')-->resources밑에 있음
+
+*index.blade.php --> blade템플릿 쓰려고
+
+*https://laravel.com/docs/8.x/blade --> blade 문법
+
+*복습 --> web.php보면 됨
+
+*controller?
+--> php artisan make:controller TestController(php artisan + 폴더이름 + 파일이름)로 만든다.
+
+*?php artisan list와 php artisan help serve의 차이
+-->php artisan list : php artisan의 명령어 리스트
+-->php artisan help serve는 그중에 serve라는 명령어의 정보!
+
+*안내해주는 2경로가 있음
+1. -->Route::get('/test2', function () {
+    return view('test.index');
+    //test폴더 밑에 index파일
+});-->views에 test폴더에 index파일
+
+2. -->Route::get('/test4', [TestController::class, 'index']);
+-->TestController드래그하고 Ctrl+i+Tab해서 import하면 쓸 수 있음
+TestController는 php artisan make:controller TestController이렇게 만들고
+-->그건 Controllers의 TestController.php에 클래스형식으로 만들면 됨. 근데 이것 도 어차피  view거쳐야됨.
+
+*사용자 인증기능 추가
+-->미들웨어
+
+*for 게시판
+게시글 등록, 수정, 삭제, 상세보기
+게시글 등록 --> 등록 form, DB가 필요함.--> 제목,내용, 글쓴이
+게시글 수정 --> 수정 form필요 --> 제목, 내용(원래 값이 있어야 함), 글쓴이 -->DB에 수정 
+게시글 삭제 --> DB에서 삭제
+게시글 상세보기 --> 상세보기 page
+게시글 리스트보기 --> 리스트보기 page
+-->request가 7개정도 발생될 수 있음
+-->PostConroller로 만들거임
+--->Create Method --->posts.create
+--->Store Method 
+--->Edit Method ---> posts.edit
+--->Update Method
+--->Destroy Method
+--->Show Method ---> posts.show
+--->index Method ---> posts.index
+
+*실습 http://localhost:8000/posts/create을 열면 게시판이 나오게
+
+*라우트 --> PostController --> view
+
+* php artisan route:list->내가 만든 라우터 리스트들이 나옴
+
+*https://getbootstrap.com/docs/4.4/components/forms/ --> 갖다쓰면됨 --> 적당한거 찾아서 변형하면 됨.
+-->이건 형식이고(bootstrap form이라고 치면 나온다)
+
+*bootstrap cdn 치면 나오는 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+-->이거 왜 해야 되는지.
+-->그래야 class로 쓸 수 가 있다. 
